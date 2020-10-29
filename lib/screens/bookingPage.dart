@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:tables_24_v1/widgets/showTables.dart';
 
+
 class BookingPage extends StatefulWidget {
   String resName;
   String resId;
   DateTime _dateTime = DateTime.now();
   TimeOfDay _timeOfDay = TimeOfDay.now();
   String _chosenValue = 'one';
+  Map<String, String> requirements = {};
 
-  BookingPage(String this.resName, String this.resId);
+  BookingPage(String this.resName, String this.resId){
+    requirements['date'] = this._dateTime.toString().substring(0, 10);
+    requirements['time'] = this._timeOfDay.toString().substring(10, 15);
+    requirements['noOfSeats'] = this._chosenValue;
+  }
 
   @override
   _BookingPageState createState() => _BookingPageState();
@@ -38,6 +44,7 @@ class _BookingPageState extends State<BookingPage> {
                             .then((date) {
                           setState(() {
                             widget._dateTime = date;
+                            widget.requirements['date'] = date.toString().substring(0, 10);
                           });
                         });
                       },
@@ -58,6 +65,7 @@ class _BookingPageState extends State<BookingPage> {
                         ).then((time) {
                           setState(() {
                             widget._timeOfDay = time;
+                            widget.requirements['time'] = time.toString().substring(10, 15);
                           });
                         });
                       },
@@ -89,7 +97,7 @@ class _BookingPageState extends State<BookingPage> {
                 ),
               ]),
 
-          Container(height: 500, width: 300,child: ShowTables()),
+          Container(height: 500, width: 400,child: ShowTables(widget.requirements)),
         ],
       ),
     ));

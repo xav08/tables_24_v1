@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tables_24_v1/widgets/restaurantImageCarousal.dart';
 import 'package:tables_24_v1/widgets/starRating.dart';
 
 class RestaurantImage extends StatelessWidget {
@@ -11,21 +12,10 @@ class RestaurantImage extends StatelessWidget {
     return Container(
       height: 430,
       width: 430,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-            ),
-          ],
-          image: DecorationImage(
-            image: NetworkImage(
-              "https://tables24.000webhostapp.com/images/restaurants/200001/restaurant.webp",
-            ),
-            fit: BoxFit.cover,
-          )),
+
       child: Stack(
         children: <Widget>[
+          RestaurantImageCarousal(snap[0]["images"]),
           Positioned(
             bottom: 0,
             left: 0,

@@ -5,6 +5,7 @@ import 'package:tables_24_v1/functions/getRestaurantDetails.dart';
 import 'package:tables_24_v1/widgets/restaurantBookingButton.dart';
 import 'package:tables_24_v1/widgets/restaurantDescription.dart';
 import 'package:tables_24_v1/widgets/restaurantFeatures.dart';
+import 'package:tables_24_v1/widgets/restaurantFeaturesCard.dart';
 import 'package:tables_24_v1/widgets/restaurantImage.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,7 +49,8 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: 20.0,
                       ),
-                      RestaurantFeatures(snap1),
+                     // RestaurantFeatures(snap1),
+                      RestaurantFeaturesCard("${snap1[0]['features']}"),
                       SizedBox(height: 20.0),
                       RestaurantDescription(snap1),
                       RestaurantBookingButton(snap1),

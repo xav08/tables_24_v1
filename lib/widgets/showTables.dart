@@ -7,10 +7,12 @@ import 'package:tables_24_v1/screens/mainScreen.dart';
 
 
 class ShowTables extends StatelessWidget {
+  Map<String, String> requirements;
+  ShowTables(Map<String, String> this.requirements);
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getRestaurants(),
+      future: getTables(requirements),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         List snap = snapshot.data;
 
@@ -24,25 +26,20 @@ class ShowTables extends StatelessWidget {
             child: Text("Error fetching Data"),
           );
         }
+        print(requirements['date']);
+        print(requirements['time']);
+        print(requirements['noOfSeats']);
 
         return ListView.builder(
           itemCount: snap.length,
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () {
-                String temp = snap[index]['res_name'];
-                String temp1 = snap[index]['restaurant_id'];
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MainScreen()),
-                );
-              },
+              onTap: () {},
               child: Card(
                 child: ListTile(
                   leading: FlutterLogo(size: 72),
                   title: Text(
-                      "restaurant_id: ${snap[index]['restaurant_id']}"),
-                  subtitle: Text("res_name ${snap[index]['res_name']}\n "),
+                      "table_id: ${snap[index]['tableId']}"),
                 ),
               ),
             );

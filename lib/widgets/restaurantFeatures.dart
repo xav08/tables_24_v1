@@ -36,7 +36,7 @@ class RestaurantFeatures extends StatelessWidget {
                   size: 30,
                 ),
                 SizedBox(width: 10),
-                Text("Multi cuisine",
+                Text("Cafe",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -49,7 +49,7 @@ class RestaurantFeatures extends StatelessWidget {
                   size: 30,
                 ),
                 SizedBox(width: 10),
-                Text("Multi cuisine",
+                Text("Parking",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -62,7 +62,7 @@ class RestaurantFeatures extends StatelessWidget {
                   size: 30,
                 ),
                 SizedBox(width: 10),
-                Text("Multi cuisine",
+                Text("Fast Food",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
