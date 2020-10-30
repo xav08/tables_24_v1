@@ -52,9 +52,6 @@ getIcon(String str1){
 
 getTables(Map<String, String> requirements) async{
   String theUrl = 'https://tables24.000webhostapp.com/Savio/getTables.php';
-  print("inside getTables" + requirements['date']);
-  print("inside getTAbles" + requirements['time']);
-  print("inside getTables" + requirements['noOfSeats']);
   print(requirements['date'] + ' ' + requirements['time']);
   var res = await http.post(Uri.encodeFull(theUrl),headers: {"Accept":"application/json"},
       body: {
@@ -67,4 +64,34 @@ getTables(Map<String, String> requirements) async{
   print(responsBody);
   return responsBody;
 
+}
+
+getReservations(String custId) async{
+  print(custId);
+  String theUrl = "https://tables24.000webhostapp.com/Savio/getReservations.php";
+  var res = await http.post(Uri.encodeFull(theUrl),headers: {"Accept":"application/json"},
+      body: {
+        "custId": custId
+      }
+  );
+  var respBody = json.decode(res.body);
+  print(respBody);
+  return respBody;
+}
+
+
+reserveTable(String custId, String tableId, String date, String time, String duration)async{
+  String dateTime = date+ ' ' + time;
+  print(dateTime);
+  String theUrl = "https://tables24.000webhostapp.com/Savio/reserveTable.php";
+  var res = await http.post(Uri.encodeFull(theUrl),headers: {"Accept":"application/json"},
+      body: {
+        "custId": custId,
+        "tableId": tableId,
+        "dateTime": dateTime,
+        "duration": duration,
+      }
+  );
+  var respBody = json.decode(res.body);
+  print(respBody);
 }

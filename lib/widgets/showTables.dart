@@ -5,10 +5,11 @@ import 'dart:convert';
 import 'package:tables_24_v1/functions/getRestaurantDetails.dart';
 import 'package:tables_24_v1/screens/mainScreen.dart';
 
-
 class ShowTables extends StatelessWidget {
   Map<String, String> requirements;
+
   ShowTables(Map<String, String> this.requirements);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -34,13 +35,33 @@ class ShowTables extends StatelessWidget {
           itemCount: snap.length,
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () {},
-              child: Card(
-                child: ListTile(
-                  leading: FlutterLogo(size: 72),
-                  title: Text(
-                      "table_id: ${snap[index]['tableId']}"),
-                ),
+              onTap: () {
+                reserveTable(
+                    "100001",
+                    "${snap[index]['tableId']}",
+                    requirements['date'],
+                    requirements['time'],
+                    '2');
+              },
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: MediaQuery.of(context).size.height / 3,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: Colors.black,
+                      ),
+                      image: DecorationImage(
+                          image: NetworkImage("${snap[index]['image']}"),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  )
+                ],
               ),
             );
           },

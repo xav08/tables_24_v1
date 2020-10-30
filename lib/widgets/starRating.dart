@@ -29,7 +29,7 @@ class StarRating extends StatelessWidget {
           color: Colors.yellowAccent,
           size: 20.0,
         ),
-        rating >= 4
+        rating > 4
             ? Icon(
                 Icons.star,
                 color: Colors.yellowAccent,
@@ -58,7 +58,7 @@ class StarRatingBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 100.0,
-      height: 30.0,
+      height: 24.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
           itemCount: 5,
